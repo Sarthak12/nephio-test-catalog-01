@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # kpt-merge: /ueransimgnb-example
+  name: ueransimgnb-example
+  labels:
+    app.kubernetes.io/version: "v3.2.6"
+    app: ueransim
+    component: gnb
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|default|ueransimgnb-example'
+  namespace: ueransim
+spec:
+  selector:
+    matchLabels:
+      app: ueransim
+      component: gnb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ueransim
+        component: gnb
+    spec:
+      containers:
+      - image: towards5gs/ueransim-gnb:v3.2.6
+        imagePullPolicy: IfNotPresent
+        name: gnb
+        ports:
+        - name: gnb-ue
+          containerPort: 4997
+          protocol: UDP
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ["./nr-gnb"]
+        args: ["-c", "/ueransim/config/gnb-config.yaml"]
+        volumeMounts:
+        - mountPath: /ueransim/config
+          name: gnb-volume
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      volumes:
+      - name: gnb-volume
+        configMap:
+          name: gnb-configmap
