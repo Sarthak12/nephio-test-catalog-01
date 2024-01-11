@@ -6,7 +6,7 @@ metadata: # kpt-merge: /n2
     nephio.org/network-name: n2
     config.kubernetes.io/local-config: "true"
     specializer.nephio.org/owner: apps/v1.Deployment.ueransimgnb-example
-    specializer.nephio.org/namespace: example
+    specializer.nephio.org/namespace: ueransim
     internal.kpt.dev/upstream-identifier: 'req.nephio.org|Interface|default|n2'
 spec:
   networkInstance:

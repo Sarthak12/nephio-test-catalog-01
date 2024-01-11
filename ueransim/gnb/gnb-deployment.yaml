@@ -8,6 +8,7 @@ metadata: # kpt-merge: /ueransimgnb-example
     component: gnb
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|Deployment|default|ueransimgnb-example'
+  namespace: ueransim
 spec:
   selector:
     matchLabels:
