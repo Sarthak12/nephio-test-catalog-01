@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: # kpt-merge: free5gc/free5gc-operator-leader-election-role-binding
+  namespace: free5gc
+  name: free5gc-operator-leader-election-role-binding
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|RoleBinding|free5gc|free5gc-operator-leader-election-role-binding'
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: free5gc-operator-leader-election-role
+subjects:
+- kind: ServiceAccount
+  name: free5gc-operator
