@@ -20,6 +20,8 @@ upstreamLock:
     commit: 31ee80981fd0fb247a83b54f825f1b9ee86dee23
 info:
   description: this package represents ueransim NFs, which are required to perfirm E2E conn testing
+  readinessGates:
+  - conditionType: nephio.org.Specializer.specialize
 pipeline:
   mutators:
   - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
@@ -33,3 +35,15 @@ pipeline:
   - image: docker.io/nephio/nad-fn:v1.0.1
   - image: docker.io/nephio/interface-fn:v1.0.1
   - image: docker.io/nephio/ueransim-deploy-fn:v1.0.1
+status:
+  conditions:
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    reason: Failed
+    status: "False"
+    type: nephio.org.Specializer.specialize
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n2
+  - message: 'spec invalid: mandatory field ClusterName is missing from WorkloadCluster'
+    status: "False"
+    type: req.nephio.org/v1alpha1.Interface.n3

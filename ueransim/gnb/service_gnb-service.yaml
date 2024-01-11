@@ -8,6 +8,7 @@ metadata: # kpt-merge: /gnb-service
     component: gnb
   annotations:
     internal.kpt.dev/upstream-identifier: '|Service|default|gnb-service'
+  namespace: ueransim
 spec:
   type: ClusterIP
   ports:

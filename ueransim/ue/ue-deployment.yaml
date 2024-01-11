@@ -8,6 +8,7 @@ metadata: # kpt-merge: /ueransimue-example
     component: ue
   annotations:
     internal.kpt.dev/upstream-identifier: 'apps|Deployment|default|ueransimue-example'
+  namespace: ueransim
 spec:
   selector:
     matchLabels:

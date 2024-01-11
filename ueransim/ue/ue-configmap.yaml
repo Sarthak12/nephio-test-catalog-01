@@ -8,6 +8,7 @@ metadata: # kpt-merge: /ue-configmap
     component: ue
   annotations:
     internal.kpt.dev/upstream-identifier: '|ConfigMap|default|ue-configmap'
+  namespace: ueransim
 data:
   ue-config.yaml: |
     supi: "imsi-208930000000003"  # IMSI number
