@@ -1,0 +1,18 @@
+apiVersion: ipam.resource.nephio.org/v1alpha1
+kind: IPClaim
+metadata: # kpt-merge: /amf-regional-n2-ipv4
+  name: amf-regional-n2-ipv4
+  annotations:
+    nephio.org/action: get
+    config.kubernetes.io/local-config: "true"
+    specializer.nephio.org/owner: apps/v1.Deployment.ueransimgnb-example
+    specializer.nephio.org/namespace: example
+    internal.kpt.dev/upstream-identifier: 'ipam.resource.nephio.org|IPClaim|default|amf-regional-n2-ipv4'
+spec:
+  kind: network
+  selector:
+    matchLabels:
+      nephio.org/address-family: ipv4
+      nephio.org/nsn-name: amf-regional-n2-ipv4
+  networkInstance:
+    name: vpc-ran
