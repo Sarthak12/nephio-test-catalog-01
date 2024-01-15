@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /5g-core-topology
+  name: 5g-core-topology
+  annotations:
+    config.kubernetes.io/local-config: "true"
+    internal.kpt.dev/upstream-identifier: kpt.dev|Kptfile|default|5g-core-topology
+upstream:
+  type: git
+  git:
+    repo: https://github.com/Sarthak12/my-custom-packages.git
+    directory: 5g-core-topology
+    ref: 5g-core-topology/v2
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/Sarthak12/my-custom-packages.git
+    directory: 5g-core-topology
+    ref: 5g-core-topology/v2
+    commit: 0a0e164f38c273273448f1b2a096a341a3b729e3
+info:
+  description: "An Example Network Function topology for Nephio that enables deployment of workload clusters running the free5gc UPF, SMF, and AMF network functions.\nThis topology contains the package variant sets that can be specialized by the pckage variant set controller. For each package variant set, the following customizations can be made: - The target repositories specified explicitly or using match labels - Other configuration to be added via configuration injection\nSee https://github.com/GoogleContainerTools/kpt/blob/main/docs/design-docs/08-package-variant.md for more information.\n"

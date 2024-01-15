@@ -1,0 +1,19 @@
+apiVersion: config.porch.kpt.dev/v1alpha2
+kind: PackageVariantSet
+metadata: # kpt-merge: /free5g-upf-edge
+  name: free5g-upf-edge
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'config.porch.kpt.dev|PackageVariantSet|default|free5g-upf-edge'
+spec:
+  upstream:
+    repo: free5gc-packages
+    package: pkg-example-upf-bp
+    revision: v1
+  targets:
+  - repositorySelector:
+      matchExpressions:
+      - key: nephio.org/site-type
+        operator: In
+        values:
+        - edge
+        - combined
